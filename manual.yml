@@ -1,0 +1,14 @@
+name: Manual
+on:
+  workflow_dispatch:                                                  # 수동으로 워크플로우 실행
+    inputs:
+      greeting:                                                       # 입력 파라미터명
+        type: string                                                  
+        default: World                                                # 입력 파라미터 기본값
+        required: true                                                # 입력 파라미터 필수 여부
+        description: A cheerful word                                  # 입력 파라미터 설명
+jobs:
+    run:
+        runs-on: ubuntu-latest
+        steps:
+         - run: echo "Hello, ${{ github.event.inputs.greeting }}"     # 입력 파라미터를 사용하여 인사말 출력
